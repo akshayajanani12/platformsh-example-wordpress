@@ -1,7 +1,13 @@
 {
-    "name": "platform/platform-wordpress-bare",
-    "description": "Getting started with WordPress and Platformsh",
-    "license": "MIT",
+    "name": "platform/platform-wordpress",
+    "description": "WordPress for Platform.sh",
+    "license": "GPL-2.0+",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
+    ],
     "require": {
         "johnpbloch/wordpress-core-installer": "~0.2",
         "johnpbloch/wordpress": "~4.6"
@@ -13,5 +19,5 @@
         "post-install-cmd": [
             "cp wp-config.php wp/wp-config.php"
         ]
-      }
+    }
 }
