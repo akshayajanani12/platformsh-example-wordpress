@@ -1,32 +1,19 @@
-# WordPress 4.4 Example
+# WordPress template for Platform.sh
 
-This is a no-thrills example of a minimal repository to deploy a WordPress 4.4 instance on Platform.sh
+This project provides a starter kit for WordPress projects hosted on Platform.sh. It is primarily an example, although could be used as the starting point for a real project.  It is built using Composer, via the popular <a href="https://github.com/johnpbloch/wordpress">johnpbloch/wordpress</a> script.
 
-This example is based on using Composer. You can see there is not much in terms of files comitted to this repository.
+## Starting a new project
 
-This is the whole layout of the repository (it will still make for a perfectly functional web site on https://platform.sh !)
-```
-.platform/
-         /routes.yaml
-         /services.yaml
-plugins/
-         /README.txt
-themes/
-         /README.txt
-.platform.app.yaml
-composer.json
-composer.lock
-wp-config.php
-```
+To start a new project based on this template, follow these 3 simple steps:
 
-In `.platform.app.yaml` we have the basic configuration of our applicaiton (we call it php), saying this is a Composer 
-application, that we depdend on a database called `database` and that we automatically move your custom themes and plugins at the end of each deployment.
+1. Clone this repository locally.  You may optionally remove the `origin` remote or remove the `.git` directory and re-init the project if you want a clean history.
 
-In `.platform/routes.yaml` we just say that we will redirect www to the naked domain, and that the application that 
-will be serving HTTP will be the one we called `php`.
+2. Create a new project through the Platform.sh user interface and select "Import an existing project" when prompted.
 
-In `.platform/services.yaml` we say we want a MySQL instance.
+3. Run the provided Git commands to add a Platform.sh remote and push the code to the Platform.sh repository.
 
-We also give you some nice empty (and totally not required) directories, so you would know where you are supposed to put 
-your custom themes and plugins. "Normal", unforked contributed themes and plugins should be put in 
-the `composer.json` file  (which contains our base WordPress version).
+That's it!  You now have a working "hello world" level project you can build on.
+
+## Using as a reference
+
+You can also use this repository as a reference for your own projects, and borrow whatever code is needed. The most important parts are the `.platform.app.yaml` file and the `.platform` directory.
