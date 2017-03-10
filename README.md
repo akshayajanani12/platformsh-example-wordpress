@@ -17,3 +17,22 @@ That's it!  You now have a working "hello world" level project you can build on.
 ## Using as a reference
 
 You can also use this repository as a reference for your own projects, and borrow whatever code is needed. The most important parts are the `.platform.app.yaml` file and the `.platform` directory.
+
+## Local settings
+
+This example looks for an optional `wp-config-local.php` alongside your `wp-config.php` file that you can use to develop locally. This file is ignored in git.
+
+Example `wp-config-local.php`:
+
+```php
+<?php
+
+define('WP_HOME', "http://localhost");
+define('WP_SITEURL',"http://localhost");
+define('DB_NAME', "my_wordpress");
+define('DB_USER', "user");
+define('DB_PASSWORD', "a strong password");
+define('DB_HOST', "127.0.0.1");
+define('DB_CHARSET', 'utf8');
+define('DB_COLLATE', '');
+```
