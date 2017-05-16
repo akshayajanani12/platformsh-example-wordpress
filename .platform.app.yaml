@@ -48,9 +48,7 @@ mounts:
 # The hooks that will be performed when the package is deployed.
 hooks:
     build: |
-      mkdir -p wp/wp-content/themes
-      mkdir -p wp/wp-content/plugins
-      mkdir -p wp/wp-content/languages
-      cp -r plugins/* wp/wp-content/plugins/
-      cp -r themes/* wp/wp-content/themes/
-      cp -r languages/* wp/wp-content/languages/
+      rsync -uar --delete-after /app/plugins/ /app/wp/wp-content/plugins/
+      rsync -uar --delete-after /app/themes/ /app/wp/wp-content/themes/
+      rsync -uar --delete-after /app/languages/ /app/wp/wp-content/languages/
+      rsync -uar --delete-after /app/wp-content/ /app/wp/wp-content/
