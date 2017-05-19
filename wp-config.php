@@ -1,18 +1,10 @@
 <?php
 
-if (empty($_ENV['PLATFORM_RELATIONSHIPS'])){
-/*
-You would put here your local configuration for example:
-//define('WP_HOME', "http://localhost");
-//define('WP_SITEURL',"http://localhost");
-//define('DB_NAME', "my_wordpress");
-//define('DB_USER', "user");
-//define('DB_PASSWORD', "a strong password");
-//define('DB_HOST', "127.0.0.1");
-//define('DB_CHARSET', 'utf8');
-//define('DB_COLLATE', '');
-*/
-
+if (empty($_ENV['PLATFORM_RELATIONSHIPS'])) {
+  // You would can create a wp-config-local.php file with local configuration
+  if ( file_exists( dirname( __FILE__ ) . '/wp-config-local.php' ) ) {
+    include( dirname( __FILE__ ) . '/wp-config-local.php' );
+  }
 } else {
     // This is where we get the relationships of our application dynamically
     //from Platform.sh
