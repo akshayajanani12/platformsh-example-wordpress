@@ -9,6 +9,17 @@ if (empty($_ENV['PLATFORM_RELATIONSHIPS'])) {
     // This is where we get the relationships of our application dynamically
     //from Platform.sh
 
+    // set session path to /tmp in cas we are using wp-cli to avoid notices
+    if (php_sapi_name() === 'cli') {
+      session_save_path("/tmp");
+    }
+
+    // we might be running wp-cli
+    if (isset($_SERVER['HTTP_HOST'])) {
+          $site_host = $_SERVER['HTTP_HOST'];
+          $site_scheme = !empty($_SERVER['https']) ? 'https' : 'http';
+    }
+
     $relationships = json_decode(base64_decode($_ENV['PLATFORM_RELATIONSHIPS']), TRUE);
 
     // We are using the first relationship called "database" found in your
@@ -20,9 +31,6 @@ if (empty($_ENV['PLATFORM_RELATIONSHIPS'])) {
     define('DB_HOST', $relationships['database'][0]['host']);
     define('DB_CHARSET', 'utf8');
     define('DB_COLLATE', '');
-
-    $site_host = $_SERVER['HTTP_HOST'];
-    $site_scheme = !empty($_SERVER['https']) ? 'https' : 'http';
 
     // Check whether a route is defined for this application in the Platform.sh routes.
     // Use it as the site hostname if so (it is not ideal to trust HTTP_HOST).
