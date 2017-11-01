@@ -9,8 +9,8 @@
         }
     ],
     "require": {
-        "johnpbloch/wordpress-core-installer": "~0.2",
-        "johnpbloch/wordpress": "~4.7"
+        "johnpbloch/wordpress-core-installer": "^1.0",
+        "johnpbloch/wordpress": "~4.8"
     },
     "extra": {
         "wordpress-install-dir": "wp",
