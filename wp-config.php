@@ -1,7 +1,7 @@
 <?php
 
 if (empty($_ENV['PLATFORM_RELATIONSHIPS'])) {
-  // You would can create a wp-config-local.php file with local configuration
+  // You can create a wp-config-local.php file with local configuration.
   if ( file_exists( dirname( __FILE__ ) . '/wp-config-local.php' ) ) {
     include( dirname( __FILE__ ) . '/wp-config-local.php' );
   }
