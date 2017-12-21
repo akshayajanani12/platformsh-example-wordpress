@@ -1,6 +1,6 @@
 <?php
 
-if (empty($_ENV['PLATFORM_RELATIONSHIPS'])) {
+if (!getenv('PLATFORM_RELATIONSHIPS')) {
   // You can create a wp-config-local.php file with local configuration.
   if ( file_exists( dirname( __FILE__ ) . '/wp-config-local.php' ) ) {
     include( dirname( __FILE__ ) . '/wp-config-local.php' );
@@ -20,7 +20,7 @@ if (empty($_ENV['PLATFORM_RELATIONSHIPS'])) {
           $site_scheme = !empty($_SERVER['https']) ? 'https' : 'http';
     }
 
-    $relationships = json_decode(base64_decode($_ENV['PLATFORM_RELATIONSHIPS']), TRUE);
+    $relationships = json_decode(base64_decode(getenv('PLATFORM_RELATIONSHIPS')), TRUE);
 
     // We are using the first relationship called "database" found in your
     // relationships. Note that you can call this relationship as you wish
@@ -34,10 +34,10 @@ if (empty($_ENV['PLATFORM_RELATIONSHIPS'])) {
 
     // Check whether a route is defined for this application in the Platform.sh routes.
     // Use it as the site hostname if so (it is not ideal to trust HTTP_HOST).
-    if (isset($_ENV['PLATFORM_ROUTES'])) {
-      $routes = json_decode(base64_decode($_ENV['PLATFORM_ROUTES']), TRUE);
+    if (getenv('PLATFORM_ROUTES')) {
+      $routes = json_decode(base64_decode(getenv('PLATFORM_ROUTES')), TRUE);
       foreach ($routes as $url => $route) {
-        if ($route['type'] === 'upstream' && $route['upstream'] === $_ENV['PLATFORM_APPLICATION_NAME']) {
+        if ($route['type'] === 'upstream' && $route['upstream'] === getenv('PLATFORM_APPLICATION_NAME')) {
           // Pick the first hostname, or the first HTTPS hostname if one exists.
           $host = parse_url($url, PHP_URL_HOST);
           $scheme = parse_url($url, PHP_URL_SCHEME);
@@ -53,6 +53,7 @@ if (empty($_ENV['PLATFORM_RELATIONSHIPS'])) {
     define('WP_HOME', $site_scheme . '://' . $site_host);
     define('WP_SITEURL', WP_HOME);
 }
+
 // Since you can have multiple installations in one database, you need a unique
 // prefix.
 $table_prefix  = 'wp_';
