@@ -48,7 +48,7 @@ if (getenv('PLATFORM_RELATIONSHIPS')) {
     }
 
     // Debug mode should be disabled on Platform.sh. Set this constant to true
-    // in a template-local.php file to skip this setting on local development.
+    // in a wp-config-local.php file to skip this setting on local development.
     if (!defined('WP_DEBUG')) {
         define('WP_DEBUG', false);
     }
@@ -99,5 +99,5 @@ if ( !defined('ABSPATH') )
     define('ABSPATH', dirname(__FILE__) . '/');
 
 /** Sets up WordPress vars and included files. */
-require_once(ABSPATH . 'wp/wp-settings.php');
+require_once(ABSPATH . 'wp-settings.php');
 
