@@ -16,3 +16,11 @@ wp/
 node_modules/
 vendor/
 wp-config-local.php
+
+!web/
+web/*
+!web/index.php
+!web/wp-cli.yml
+!web/wp-config.php
+!web/wp-content/
+.idea
