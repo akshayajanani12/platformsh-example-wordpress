@@ -46,3 +46,8 @@ dependencies:
 mounts:
     "/web/wp-content/uploads": "shared:files/uploads"
     "/web/wp-content/cache": "shared:files/cache"
+
+hooks:
+    build: |
+        cp -R web/wp/wp-content/plugins/* web/wp-content/plugins/
+        cp -R web/wp/wp-content/themes/* web/wp-content/themes/
