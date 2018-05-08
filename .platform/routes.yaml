@@ -7,7 +7,7 @@
     type: upstream
     upstream: "app:http"
     cache:
-      enable: true
+      enabled: true
 
       # Base the cache on the session cookie. Ignore all other cookies.
       cookies: ['/^wordpress_logged_in_*/']
